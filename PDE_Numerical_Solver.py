@@ -26,7 +26,6 @@ for line in thrust_file[0:len(thrust_file)-1]:
     arr[1] = float(arr[1])
     thrust_array.append(arr)
 thrust_array.append([maxTime+0.1, 0.0])
-thrust_array.append([maxTime+0.2, 0.0])
 thrust = {}
 for i in range(int(maxTime/dt)):
     time = i*dt
