@@ -38,3 +38,28 @@ for i in range(int(maxTime/dt)):
     f_end = thrust_array[j][1]
     thrust[time] = (f_end-f_start)/(t_end-t_start)*(time-t_start)+f_start
     
+    
+    
+    
+    
+    
+    
+def thrust_force(time, orientation):
+    return thrust[time]*orientation
+
+def drag_force(orientation, position, velocity):
+    #drag_force = 0.5*density(position)*np.dot(velocity, velocity)*drag_coefficient(position, velocity)*area(position)
+    return [0.0, 0.0, 0.0]
+
+def gravity_force(position, time):
+    return [0.0, -9.81*mass(time), 0.0]
+
+def mass(time):
+    return 5.9
+
+for i in range(int(maxTime/dt)):
+    time = i*dt
+    acc = (thrust_force(time, orientation) + drag_force(orientation, position, velocity) + gravity_force(position, time))/mass(time)
+    velocity = velocity + acc*dt
+    position = position + velocity*dt
+    print([time, position[1], velocity[1], acc[1]])
